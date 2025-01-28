@@ -23,4 +23,4 @@ How to Use
  Live Demo
 
 You can view the live demo of the project here:
-Course Average Calculator Demo
+https://kemosquera.github.io/GradesCalculator/
