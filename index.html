@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Grade Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .result {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // Get number of courses from user
+        const numOfCourses = parseInt(prompt("How many courses did you finish?", "0"));
+
+        // Check if input is valid
+        if (isNaN(numOfCourses)) {
+            document.write("<p>Invalid Input!</p>");
+        } else {
+            // Create empty array for course marks
+            const courseMarks = [];
+            let total = 0;
+
+            // Loop to get course marks from user
+            for (let i = 1; i <= numOfCourses; i++) {
+                const mark = parseFloat(prompt(`Enter your mark for course ${i}`));
+                courseMarks.push(mark);
+                total += mark;
+            }
+
+            // Display all course marks
+            document.write("<p>Your course marks are:</p>");
+            for (let i = 0; i < courseMarks.length; i++) {
+                document.write(`<p>Course ${i + 1}: ${courseMarks[i]}</p>`);
+            }
+
+            // Calculate average
+            const average = total / numOfCourses;
+            const roundedAverage = average.toFixed(2);
+
+            // Determine grade based on average
+            let grade;
+            if (average >= 90 && average <= 100) {
+                grade = "A+";
+            } else if (average >= 80 && average <= 89) {
+                grade = "B";
+            } else if (average >= 70 && average <= 79) {
+                grade = "C";
+            } else if (average >= 60 && average <= 69) {
+                grade = "D";
+            } else if (average < 60 && average >= 0) {
+                grade = "F";
+            } else {
+                document.write("<p>Sorry, all the marks have to be from minimum 0 to maximum 100!</p>");
+                // Exit the script
+                throw new Error("Invalid marks range");
+            }
+
+            // Display final result
+            document.write(`<p>Your final average is ${roundedAverage}. Your grade is ${grade}</p>`);
+        }
+    </script>
+</body>
+</html>
